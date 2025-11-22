@@ -28,17 +28,46 @@ Next state of D flip-flop is always equal to data input, D for every positive tr
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Give clock (CLK) and data (D) as inputs to the D Flip-Flop.
+
+2.The output Q changes only at the negative edge (falling edge) of the clock.
+
+3.When the clock transitions from 1 to 0, the input D is sampled.
+
+4.The output Q follows D at that falling edge and holds the same value until the next negative edge.
+
+5.If reset/clear is present, apply it to make Q = 0 before starting the experiment.
+
 
 **PROGRAM**
+// D Flip-Flop (with async reset)
+module d_ff (
+    input  wire clk, rst, D,
+    output reg  Q
+);
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            Q <= 1'b0;   // Reset
+        else
+            Q <= D;      // Capture D at clock edge
+    end
+endmodule
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+
+
+
+DEVELOPED BY: MUGILARASI E
+REGISTER NO: 25017644
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1920" height="1080" alt="Screenshot (62)" src="https://github.com/user-attachments/assets/edddae55-fc43-403a-a41f-5347cda969c4" />
+
 
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1920" height="1080" alt="Screenshot (63)" src="https://github.com/user-attachments/assets/61ddf704-451e-45c6-b175-d44ea42a2984" />
+
 
 
 **RESULTS**
+Thus the D-flipflop using verilog and validating their functionality using their functional tables is implemented and verified.
